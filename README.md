@@ -86,9 +86,6 @@ docs/                     Audit notes and historical metrics
 .github/workflows/        Automated checks
 ```
 
-## Screenshots / demo
-
-No hosted demo or verified screenshots are currently supplied. Future screenshots should show the actual prediction form and CSV preview; no sample image or result is presented as a measured outcome.
 
 ## Limitations and provenance
 
