@@ -10,8 +10,6 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
@@ -39,7 +37,7 @@
   <!-- ======= Property Search Section ======= -->
   <div class="click-closed"></div>
   <!--/ Form Search Star /-->
-  
+
   <!-- ======= Header/Navbar ======= -->
   <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
     <div class="container">
@@ -48,18 +46,18 @@
         <span></span>
         <span></span>
       </button>
-      <a class="navbar-brand text-brand" href="index.html">Sales<span class="color-b">Prediction</span></a>
+      <a class="navbar-brand text-brand" href="{{ url_for('index') }}">Sales<span class="color-b">Prediction</span></a>
 
       <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
         <ul class="navbar-nav">
 
-     
+
              <li class="nav-item">
             <a class="nav-link " href="{{url_for('index')}}">Home</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="{{url_for('login')}}">Login</a>
+            <a class="nav-link " href="{{url_for('login')}}">Demo</a>
           </li>
 
           <li class="nav-item">
@@ -70,14 +68,14 @@
             <a class="nav-link active" href="{{url_for('result')}}">Prediction</a>
           </li>
 
-       
+
           <li class="nav-item">
             <a class="nav-link " href="{{url_for('chart')}}">Chart</a>
           </li>
         </ul>
       </div>
 
-       
+
 
     </div>
   </nav><!-- End Header/Navbar -->
@@ -85,45 +83,45 @@
   <!-- ======= Intro Section ======= -->
   <div class="intro intro-carousel swiper-container position-relative">
 
-    
 
-       
-      
+
+
+
       <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(../static/assets/img/slide-4.jpg)">
-	   
+
         <div class="overlay overlay-a"></div>
         <div class="intro-content display-table">
           <div class="table-cell">
 		 <center> <h1 class="intro-title mb-4 ">
-                     <span class="color-b"> </span> 
+                     <span class="color-b"> </span>
 					</br> Sales Prediction
-                    
+
                     </h1></center>
             <div class="container">
               <div class="row">
 			  <center><form action="{{ url_for('predict')}}" method="POST">
 		<div class="section-title">
-               
-                    
-           
- 
-        
+
+
+
+
+
             <div class="scrollable">
-			 
+
                <center> <table>
-			  
+
 				<tbody>
-				  
+
                     <td>Item_Type:</td>
                         <td>
                             <select type="text" id= "item_Type" name="Item_Type" method="post" required="required" placeholder="Item_Type" width="300" style="width: 300px">
-                               
+
 							       <option value="0">Dairy</option>
-						      <option value="1">Soft Drinks</option> 
+						      <option value="1">Soft Drinks</option>
 							  <option value="2">Meat</option>
-						      <option value="3">Fruits and Vegetables</option> 
+						      <option value="3">Fruits and Vegetables</option>
 							  <option value="4">Household</option>
-						      <option value="5">Baking Goods</option> 
+						      <option value="5">Baking Goods</option>
 							  <option value="6">Snack Foods</option>
 						      <option value="7">Frozen Foods</option>
 							  <option value="8">Breakfast</option>
@@ -138,30 +136,30 @@
                         </td>
                         <td>Item_Weight:</td>
                         <td>
-                           
-                             <input type="text" id="item_Weight"  type="text" name="Item_Weight" placeholder="Item_Weight" required="required" width="300" style="width: 300px"/ > 
-							   
-                         
+
+                             <input type="text" id="item_Weight"  type="text" name="Item_Weight" placeholder="Item_Weight" required="required" width="300" style="width: 300px"/ >
+
+
                         </td>
 						 </tbody>
                     <!-- Row 1 -->
                     <tbody>
                         <td>Item_MRP:</td>
                         <td>
-                           
-                             <input type="text" id="item_MRP" type="text" name="Item_MRP" placeholder="Item_MRP" required="required" width="300" style="width: 300px"/ > 
-							   
-                         
+
+                             <input type="text" id="item_MRP" type="text" name="Item_MRP" placeholder="Item_MRP" required="required" width="300" style="width: 300px"/ >
+
+
                         </td>
                         <td>Item_Visibility:</td>
                         <td>
-                           
-                             <input type="text" id="item_Visibility" type="text" name="Item_Visibility" placeholder="Item_Visibility" required="required" width="300" style="width: 300px"/ > 
-							   
-                         
+
+                             <input type="text" id="item_Visibility" type="text" name="Item_Visibility" placeholder="Item_Visibility" required="required" width="300" style="width: 300px"/ >
+
+
                         </td>
                     </tbody>
-					
+
 					</br>
 					</br>
 				<tbody>
@@ -169,84 +167,84 @@
                         <td>
                             <select type="text" id= "item_Fat_Content" name="Item_Fat_Content" method="post" required="required" placeholder="Item_Fat_Content" width="300" style="width: 300px">
                                    <option value="1">Low Fat</option>
-						      
-						      <option value="0">Regular</option> 
-							    
-                                <option value="2">Non-Edible</option> 
-								 
+
+						      <option value="0">Regular</option>
+
+
+
                             </select>
                         </td>
                         <td>Outlet_Establishment_Year:</td>
                         <td>
-                           
-                             <input type="text" id= "outlet_Establishment_Year" type="text" name="Outlet_Establishment_Year" placeholder="Outlet_Establishment_Year" required="required" width="300" style="width: 300px"/ > 
-							   
-                         
+
+                             <input type="text" id= "outlet_Establishment_Year" type="text" name="Outlet_Establishment_Year" placeholder="Outlet_Establishment_Year" required="required" width="300" style="width: 300px"/ >
+
+
                         </td>
-                         
+
                     </tbody>
                     <!-- Row 2 -->
                     <tbody>
-                         
+
                         <td>Outlet_Size:</td>
                         <td>
                             <select type="text" id="outlet_Size" name="Outlet_Size" method="post" required="required" placeholder="Outlet_Size" width="300" style="width: 300px">
                                    <option value="0">Small</option>
-						      <option value="1">Medium</option> 
+						      <option value="1">Medium</option>
 							  <option value="2">High</option>
- 
-   
-								 
+
+
+
                             </select>
                         </td>
 						<td> Outlet_Location_Type:</td>
                         <td>
                             <select type="text" id="outlet_Location_Type" name="Outlet_Location_Type" method="post" required="required" placeholder="Outlet_Location_Type" width="300" style="width: 300px">
                                    <option value="0">Tier 1</option>
-						      <option value="1">Tier 2</option> 
-						 
-							   <option value="2">Tier 3</option>  
-							   
-							   
+						      <option value="1">Tier 2</option>
+
+							   <option value="2">Tier 3</option>
+
+
                             </select>
                         </td>
-						
+
                     </tbody>
 					</br>
                     <!-- Row 3 -->
                     <tbody>
-                         
+
                         <td>Outlet_Type:</td>
                         <td>
                             <select type="text" id= "outlet_Type" name="Outlet_Type" method="post" required="required" placeholder="Outlet_Type" width="300" style="width: 300px">
                                 <option value="0">Supermarket Type1</option>
-							   <option value="1">Supermarket Type2</option> 
+							   <option value="1">Supermarket Type2</option>
 							  <option value="2">Supermarket Type3</option>
-						      <option value="3">Grocery Store </option> 
-				 
-					 
+						      <option value="3">Grocery Store </option>
+
+
                             </select>
                         </td>
-						 
-						
+
+
                     </tbody>
-					 
+
                     <!-- Row 4 --></br>
-                    
-                          
-                         
+
+
+
                 </table></center>
 				</br>
 				</br>
                 <div class="center">
-                  <center>  <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button> </center> 
+                  <center>  <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button> </center>
                 </div>
             </div>
 		 </br>
-			 <center> <a class="navbar-brand text-brand" > <span class="color-b">Prediction is: {{ prediction_text }}</span></a></center>
+			 <center> <a class="navbar-brand text-brand" > <span class="color-b">{{ error if error else ("Estimated sales: " ~ prediction_text if prediction_text is defined else "Enter the item and outlet details above.") }}</span></a></center>
         </form></center>
-                 
-				    
+
+
                   </div>
                 </div>
               </div>
@@ -254,28 +252,28 @@
           </div>
         </div>
       </div>
-       
-    
-    
+
+
+
   </div><!-- End Intro Section -->
 
   <main id="main">
 
     <!-- ======= Services Section ======= -->
-    
+
   <footer>
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          
-           
+
+
           <div class="copyright-footer">
             <p class="copyright color-text-a">
-             
+
             </p>
           </div>
           <div class="credits">
-            
+
           </div>
         </div>
       </div>
