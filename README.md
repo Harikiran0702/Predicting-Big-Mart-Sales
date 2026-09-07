@@ -1,6 +1,6 @@
 # Predicting Big Mart Sales
 
-An educational machine-learning web application originally developed as a **bachelor's project** and published later. It estimates item sales from product and outlet attributes using a decision tree, with a Flask interface for individual predictions and CSV previews.
+An machine-learning web application. It estimates item sales from product and outlet attributes using a decision tree, with a Flask interface for individual predictions and CSV previews.
 
 The project explores how historical retail data can inform sales estimates. It is a learning prototype, not a validated production forecasting system.
 
