@@ -44,7 +44,6 @@ python -m pip install -r requirements.txt
 python app.py
 ```
 
-Open <http://127.0.0.1:5000>. No credentials or environment file are required. If PowerShell blocks activation, use `.venv\Scripts\python.exe` instead of `python` for the commands above. The Flask development server is intended for local use.
 
 ## Usage
 
