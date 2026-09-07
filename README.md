@@ -11,8 +11,6 @@ The project explores how historical retail data can inform sales estimates. It i
 - Reproduce a separate 80/20 holdout evaluation from the included training data.
 - Inspect the original exploratory notebook, retained as academic history.
 
-CSV preview does **not** train the model or perform batch prediction. No login, accounts, database, or authentication service is implemented.
-
 ## Technology
 
 Python 3.12, Flask/Jinja, pandas, NumPy, and scikit-learn. The original interface uses bundled Bootstrap, Bootstrap Icons, Animate.css and Swiper assets with the EstateAgency template.
