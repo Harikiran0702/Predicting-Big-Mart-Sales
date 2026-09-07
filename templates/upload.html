@@ -10,8 +10,6 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
@@ -39,7 +37,7 @@
   <!-- ======= Property Search Section ======= -->
   <div class="click-closed"></div>
   <!--/ Form Search Star /-->
-  
+
   <!-- ======= Header/Navbar ======= -->
   <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
     <div class="container">
@@ -48,7 +46,7 @@
         <span></span>
         <span></span>
       </button>
-      <a class="navbar-brand text-brand" href="index.html">Sales<span class="color-b">Prediction</span></a>
+      <a class="navbar-brand text-brand" href="{{ url_for('index') }}">Sales<span class="color-b">Prediction</span></a>
 
       <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
         <ul class="navbar-nav">
@@ -58,7 +56,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="{{url_for('login')}}">Login</a>
+            <a class="nav-link " href="{{url_for('login')}}">Demo</a>
           </li>
 
           <li class="nav-item">
@@ -69,12 +67,12 @@
             <a class="nav-link " href="{{url_for('preview')}}">Preview</a>
           </li>
 
-       
-         
+
+
         </ul>
       </div>
 
-       
+
 
     </div>
   </nav><!-- End Header/Navbar -->
@@ -82,10 +80,10 @@
   <!-- ======= Intro Section ======= -->
   <div class="intro intro-carousel swiper-container position-relative">
 
-    
 
-       
-      
+
+
+
       <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(../static/assets/img/slide-7.jpg)">
         <div class="overlay overlay-a"></div>
         <div class="intro-content display-table">
@@ -94,59 +92,59 @@
               <div class="row">
                 <div class="col-lg-8">
                   <div class="intro-body">
-                                         
-					
+
+
 					</br>
 					</br>
-					      <div class="col-md-6 col-lg-4" style="margin-left:400px"> 
-                        <center><h2>Upload</h2></center>
+					      <div class="col-md-6 col-lg-4" style="margin-left:400px">
+                        <center><h2>Preview CSV</h2><p>Up to 2 MiB; first 100 rows only. Uploads are not saved or used for training.</p><p role="alert">{{ error }}</p></center>
             </div>
-			 
-			 
+
+
 			   <body id="page-top">
- 
+
 
  <!-- About Section -->
   <section class="col-md-12 col-sm-12 col-xs-12" id="about">
-     
-	 
- 
+
+
+
       <!-- About Section Heading -->
-   
+
 
       <!-- Icon Divider -->
-       
+
       <!-- About Section Content -->
-  
+
          <div class="col-md-12 col-sm-12 col-xs-12" style="margin-left:450px;">
-		  
-          <form action="http://localhost:5000/preview" name="fs" id="fs" method="post" enctype=multipart/form-data>
+
+          <form action="{{ url_for('preview') }}" name="fs" id="fs" method="post" enctype=multipart/form-data>
                        <br/>
-                      <input type="file" name="datasetfile" id="file1" required /> 
+                      <input type="file" accept=".csv" name="datasetfile" id="file1" required />
                        <br/>
 					   <br/>
 					   <br/>
-                    <input type="submit" style="margin-right:250px" class="btn btn-success btn-large" value="Upload"> 
+                    <input type="submit" style="margin-right:250px" class="btn btn-success btn-large" value="Upload">
                       </form>
       </div>
-    
+
   </section>
 
 
 
-  
- 
 
 
- 
+
+
+
 
 </body>
-			 
-						 
-				   
-				   
-				   
-				   
+
+
+
+
+
+
                   </div>
                 </div>
               </div>
@@ -154,28 +152,28 @@
           </div>
         </div>
       </div>
-       
-    
-    
+
+
+
   </div><!-- End Intro Section -->
 
   <main id="main">
 
     <!-- ======= Services Section ======= -->
-    
+
   <footer>
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          
-           
+
+
           <div class="copyright-footer">
             <p class="copyright color-text-a">
-             
+
             </p>
           </div>
           <div class="credits">
-            
+
           </div>
         </div>
       </div>

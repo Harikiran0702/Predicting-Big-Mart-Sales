@@ -1,0 +1,10 @@
+Historical bachelor project output; NOT a validated holdout result.
+The original decision tree was fitted on all rows before evaluation.
+Metrics below use the cube-root target scale; accuracy is not a regression metric.
+
+Algorithm: Decision Tree Regression
+
+Mean Absolute Error: 0.31
+Mean Squared Error: 0.53
+ R^2 Score: 0.9596
+Accuracy score: 0.9563659872800793

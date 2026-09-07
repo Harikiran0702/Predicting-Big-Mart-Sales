@@ -1,64 +1,74 @@
+"""Local educational demo. No authentication or persistent uploads."""
+from functools import lru_cache
+import math
 import numpy as np
 import pandas as pd
-from flask import Flask, request, jsonify, render_template, redirect, flash, send_file
-from sklearn.preprocessing import MinMaxScaler
-from werkzeug.utils import secure_filename
-import pickle
-from sklearn import tree
-import sklearn
-print('The scikit-learn version is {}.'.format(sklearn.__version__))
+from flask import Flask, redirect, render_template, request, url_for
+from sales_model import CATEGORIES, FEATURES, train_model
 
-app = Flask(__name__) #Initialize the flask App
+app = Flask(__name__)
+app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024
 
-
-#weight = pickle.load(open('sale.pkl','rb'))
-#ridge = pickle.load(open('ridge.pkl','rb'))
-dtrs = pickle.load(open('dtrs.pkl','rb'))
+@lru_cache(maxsize=1)
+def get_model():
+    return train_model()
 
 @app.route('/')
 @app.route('/index')
 def index():
-	return render_template('index.html')
-
- 
-
-#@app.route('/future')
-#def future():
-#	return render_template('future.html')    
+    return render_template('index.html')
 
 @app.route('/login')
 def login():
-	return render_template('login.html')
+    return redirect(url_for('upload'))
+
 @app.route('/upload')
 def upload():
-    return render_template('upload.html')  
-@app.route('/preview',methods=["POST"])
+    return render_template('upload.html')
+
+@app.route('/preview', methods=['GET', 'POST'])
 def preview():
-    if request.method == 'POST':
-        dataset = request.files['datasetfile']
-        df = pd.read_csv(dataset,encoding = 'unicode_escape')
-        df.set_index('Id', inplace=True)
-        return render_template("preview.html",df_view = df)	
+    if request.method == 'GET':
+        return redirect(url_for('upload'))
+    dataset = request.files.get('datasetfile')
+    if not dataset or not dataset.filename.lower().endswith('.csv'):
+        return render_template('upload.html', error='Choose a CSV file.'), 400
+    try:
+        df = pd.read_csv(dataset, nrows=100)
+    except (ValueError, UnicodeError, pd.errors.ParserError):
+        return render_template('upload.html', error='Unable to read this CSV file.'), 400
+    return render_template('preview.html', df_view=df)
 
-
- 
+@app.errorhandler(413)
+def too_large(error):
+    return render_template('upload.html', error='Upload must be at most 2 MiB.'), 413
 
 @app.route('/result')
 def result():
     return render_template('result.html')
-    
-@app.route('/predict',methods=['POST'])
-def predict():
-	int_feature = [x for x in request.form.values()]
-	print(int_feature)
-	int_feature = [float(i) for i in int_feature]
-	final_features = [np.array(int_feature)]
-	prediction = dtrs.predict(final_features)
 
-	output =format(float(prediction[0]))
-	print(output)  
-	result =float(output) * float(output) * float(output)
-	return render_template('result.html', prediction_text= int(result))
+@app.route('/predict', methods=['POST'])
+def predict():
+    try:
+        values = {name: float(request.form[name]) for name in FEATURES}
+        if not all(math.isfinite(value) for value in values.values()):
+            raise ValueError('Values must be finite numbers.')
+        for name, labels in CATEGORIES.items():
+            if values[name] not in range(len(labels)):
+                raise ValueError(f'Choose a valid {name}.')
+        if values['Item_Weight'] <= 0 or values['Item_MRP'] <= 0:
+            raise ValueError('Weight and MRP must be positive.')
+        if not 0 <= values['Item_Visibility'] <= 1:
+            raise ValueError('Visibility must be between 0 and 1.')
+        year = values['Outlet_Establishment_Year']
+        if year != int(year) or not 1800 <= year <= 2100:
+            raise ValueError('Enter a whole establishment year from 1800 to 2100.')
+    except (KeyError, ValueError):
+        return render_template('result.html', error='Invalid input. Check all fields, numeric ranges and category choices.'), 400
+    if values['Item_Visibility'] == 0:
+        values['Item_Visibility'] = np.nan
+    prediction = get_model().predict(pd.DataFrame([values], columns=FEATURES))[0]
+    return render_template('result.html', prediction_text=f'{prediction:,.2f}')
 
 @app.route('/chart')
 def chart():
@@ -68,8 +78,5 @@ def chart():
 def performance():
     return render_template('performance.html')
 
- 
-     
-    
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run()

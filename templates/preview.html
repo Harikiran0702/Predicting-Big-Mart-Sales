@@ -10,8 +10,6 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
@@ -39,8 +37,8 @@
   <div class="click-closed"></div>
   <!--/ Form Search Star /-->
   <div class="box-collapse">
-    
-    
+
+
   </div><!-- End Property Search Section -->>
 
   <!-- ======= Header/Navbar ======= -->
@@ -51,7 +49,7 @@
         <span></span>
         <span></span>
       </button>
-      <a class="navbar-brand text-brand" href="index.html">Sales<span class="color-b">Prediction</span></a>
+      <a class="navbar-brand text-brand" href="{{ url_for('index') }}">Sales<span class="color-b">Prediction</span></a>
 
       <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
         <ul class="navbar-nav">
@@ -61,7 +59,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link " href="{{url_for('login')}}">Login</a>
+            <a class="nav-link " href="{{url_for('login')}}">Demo</a>
           </li>
 
           <li class="nav-item">
@@ -74,7 +72,7 @@
         </ul>
       </div>
 
-   
+
 
     </div>
   </nav><!-- End Header/Navbar -->
@@ -93,24 +91,22 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-   
+
 
   <!-- Custom fonts for this theme -->
-  <link href="../static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
   <!-- Theme CSS -->
-  <link href="../static/css/freelancer.min.css" rel="stylesheet">
-  	 
-  
+
+
 
 </head>
 
 <body id="page-top">
 
   <!-- Navigation -->
-  
+
 
 
   <!-- Contact Section -->
@@ -125,7 +121,7 @@
       <div class="divider-custom">
         <div class="divider-custom-line"></div>
         <div class="divider-custom-icon">
- 
+
         </div>
         <div class="divider-custom-line"></div>
       </div>
@@ -136,20 +132,16 @@
           <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
     {{ df_view.to_html(classes="table striped",na_rep="-") | safe}}
         </div>
-		
+
       </div>
-	  	 
+
   </section>
- <div class="form-group" style="padding:0px 250px 10px 40px;height:200px">
-                    <input style="margin-left:300px" type="button" onclick="hideLoader()" class="btn btn-primary" value="Click to Train | Test" />
-					<div id="loading" style="display:None;margin-top:552950px"></div>
-					</div>
-
-
-  <!-- Copyright Section -->
+<p>Preview only: first 100 rows. This upload does not train the model.</p>
+<a class="btn btn-primary" href="{{ url_for('result') }}">Open prediction form</a>
+<!-- Copyright Section -->
   <section class="copyright py-4 text-center text-white">
     <div class="container">
-     
+
     </div>
   </section>
 
@@ -162,43 +154,33 @@
 
 
   <!-- Bootstrap core JavaScript -->
-  
-  
-  <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'></script>
-   <script type='text/javascript'>
-   
-function hideLoader() {  
-$('#loading').show(0).delay(1000).hide(0,function(){
-     alert("Training finished!");
-	 window.location = "{{url_for('result')}}";
-   });    
-}
 
 
-   </script>
-   
+
+
+
 
 </body>
-			 
-			 
-			 
-			 
-			 
-			 
+
+
+
+
+
+
           </div>
-          
+
           </div>
         </div>
       </div>
     </section><!-- End Intro Single-->
 
     <!-- ======= Contact Single ======= -->
-    
+
 
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-   
+
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
